@@ -1,4 +1,5 @@
-﻿using Product.Services;
+﻿using Product.Dtos;
+using Product.Services;
 using System.Collections.Generic;
 using System.Web.Http;
 using TinyERP.Attribute;
@@ -16,6 +17,14 @@ namespace Product.Api
         {
             IProductService service = IoC.Container.Resolve<IProductService>();
             return service.GetProducts();
+        }
+        [Route("")]
+        [HttpPost()]
+        [ResponseWrapper()]
+        public void CreateProduct(CreateProductRequest request)
+        {
+            IProductService service = IoC.Container.Resolve<IProductService>();
+            service.CreateProduct(request);
         }
     }
 }

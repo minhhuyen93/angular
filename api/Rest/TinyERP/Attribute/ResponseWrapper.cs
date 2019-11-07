@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http.Filters;
 using TinyERP.Data;
+using TinyERP.Exceptions;
 
 namespace TinyERP.Attribute
 {
@@ -11,6 +12,15 @@ namespace TinyERP.Attribute
         public override void OnActionExecuted(HttpActionExecutedContext context)
         {
             ResponseData response = new ResponseData();
+            if (context.Exception != null && context.Exception is IValidationException)
+            {
+                response.SetErrors(((IValidationException)context.Exception).Errors);
+                response.StatusCode = HttpStatusCode.OK;
+            }
+            else
+            {
+                response.StatusCode = HttpStatusCode.InternalServerError;
+            }
             if (context.Exception == null && context.Response.StatusCode == System.Net.HttpStatusCode.NoContent)
             {
                 response.StatusCode = HttpStatusCode.OK;

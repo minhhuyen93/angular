@@ -56,7 +56,9 @@
   <ItemGroup>
     <Compile Include="Api\ProductsController.cs" />
     <Compile Include="Context\ProductContext.cs" />
+    <Compile Include="Dtos\CreateProductRequest.cs" />
     <Compile Include="Entity\Product.cs" />
+    <Compile Include="Enums\ProductValidationRules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IProductRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />

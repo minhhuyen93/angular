@@ -12,7 +12,8 @@ export enum IoCLifecycle {
 export enum IoCNames {
     IResourceService = "IResourceService",
     IProductService = "IProductService",
-    IAppSettingService = "IAppSettingService"
+    IAppSettingService = "IAppSettingService",
+    IEventManager = "IEventManager"
 }
 export enum PromiseStatus {
     Subscribe = 1,
@@ -24,11 +25,21 @@ export enum LanguageCode {
 export enum ConnectorType {
     Json = "json"
 }
-export interface IButtonModel { }
+export interface IButtonModel {
+    text: string;
+    cls: string;
+    onClicked: (event?: any) => void;
+}
 export interface IConfigModel {
     domains: Array<IConfigDomain>;
 }
 export interface IConfigDomain {
     key: string;
     value: string;
+}
+export enum ValidationMessage {
+    InvalidState = "invalid-state"
+}
+export enum ValidationStatus {
+    InvalidState = "invalid"
 }

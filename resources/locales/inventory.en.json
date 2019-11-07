@@ -4,6 +4,21 @@
         "name": "Name",
         "quantity": "Quantity",
         "price": "Price",
+        "description": "Description",
+        "addNew": "Add New"
+    },
+    "addOrEdit": {
+        "title": "Add or Edit Product",
+        "name": "Name",
+        "nameWasRequired": "Name was required",
+        "nameWasUnderMinLength": "Name was under minlength",
+        "nameWasExceedMaxLength": "Name was exceed maxlength",
+        "quantity": "Quantity",
+        "quantityWasRequired": "Quantity was required",
+        "quantityWasGreaterThanZero": "Quantity was greater than zero",
+        "price": "Price",
+        "priceWasRequired": "Price was required",
+        "priceWasGreaterThanZero": "Price was greater than Zero",
         "description": "Description"
     }
 }
