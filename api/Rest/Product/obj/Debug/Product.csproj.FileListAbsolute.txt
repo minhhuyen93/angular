@@ -1,0 +1,5 @@
+E:\training\exam\api\Rest\Product\bin\Debug\Product.dll
+E:\training\exam\api\Rest\Product\bin\Debug\Product.pdb
+E:\training\exam\api\Rest\Product\obj\Debug\Product.csprojAssemblyReference.cache
+E:\training\exam\api\Rest\Product\obj\Debug\Product.dll
+E:\training\exam\api\Rest\Product\obj\Debug\Product.pdb

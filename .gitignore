@@ -3,3 +3,6 @@ package-lock.json
 src/**/*.js
 src/**/*.js.map
 !src/resources/
+api/Rest/packages/
+api/Rest/Product.Api/bin/
+api/Rest/Product.Api/obj/

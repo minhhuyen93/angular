@@ -1,0 +1,5 @@
+E:\training\exam\api\Rest\TinyERP\bin\Debug\TinyERP.dll
+E:\training\exam\api\Rest\TinyERP\bin\Debug\TinyERP.pdb
+E:\training\exam\api\Rest\TinyERP\obj\Debug\TinyERP.csprojAssemblyReference.cache
+E:\training\exam\api\Rest\TinyERP\obj\Debug\TinyERP.dll
+E:\training\exam\api\Rest\TinyERP\obj\Debug\TinyERP.pdb
