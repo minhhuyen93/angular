@@ -1,6 +1,6 @@
 import { Component, Input, DoCheck, AfterViewInit } from "@angular/core";
 import guidHelper from "../../helpers/guidHelper";
-import { IGridOption, IGridColumn } from "./igridOption";
+import { IGridOption, IGridColumn, IGridAction } from "./igridOption";
 import { Promise } from "../../models/promise";
 @Component({
     selector: "grid",
@@ -18,8 +18,27 @@ export class Grid implements DoCheck, AfterViewInit {
     public ngDoCheck(): void {
         if (window.jQuery(String.format("#{0}", this.id)).length < 0) { return; }
         if (!!this.grid) { return; }
+        let actions: Array<IGridAction> = this.options.actions || [];
+        actions.forEach((action: IGridAction) => {
+            action.id = guidHelper.create();
+        });
         this.grid = window.jQuery(String.format("#{0}", this.id)).DataTable({
             columns: this.renderColumns()
+        });
+        window.setTimeout(() => {
+            this.bindingActions();
+        }, 2000);
+    }
+    private bindingActions(): void {
+        window.jQuery(".grid-item-action").on("click", () => {
+            let actionId: string = window.jQuery(this).attr("item-id");
+            let self = this;
+            let action: IGridAction = self.options.actions.firstOrDefault((item: IGridAction) => {
+                return item.id == actionId;
+            });
+            let dataItem: any = self.grid.row(window.jQuery(this).parents("tr")).data();
+            if (!action || !action.handler) { return; }
+            action.handler(dataItem);
         });
     }
     public ngAfterViewInit(): void {
@@ -42,6 +61,26 @@ export class Grid implements DoCheck, AfterViewInit {
                 title: item.title
             });
         });
+        let self = this;
+        if (this.options.actions && this.options.actions.length > 0) {
+            columns.push({
+                data: "",
+                title: "",
+                render: (val: any, editor: any, dataItem: any) => {
+                    let html: string = self.getGridActionAsHtml(self.options.actions, dataItem);
+                    return html;
+                }
+            });
+        }
         return columns;
+    }
+    private getGridActionAsHtml(actions: Array<IGridAction>, dataItem: any): string {
+        let html: string = "";
+        actions.forEach((action: IGridAction) => {
+            if (action.isValid && !action.isValid(dataItem)) {
+                html = String.format("{0}<button class='grid-item-action' item-id='{1}'>{2}</button>", html, action.id, action.text);
+            }
+        });
+        return html;
     }
 }

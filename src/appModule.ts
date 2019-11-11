@@ -24,7 +24,7 @@ export class AppModule {
         appSettingService.setConfig(appConfig);
     }
     public ngDoBootstrap(): void {
-        let locales: Array<string> = ['inventory'];
+        let locales: Array<string> = ['inventory', 'common'];
         let resourceService: IResourceService = window.ioc.resolve(IoCNames.IResourceService);
         let self = this;
         resourceService.loadLocales(locales).then(() => {
