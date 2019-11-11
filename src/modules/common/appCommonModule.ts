@@ -15,6 +15,7 @@ import { NumberInput } from "./directives/numberInput";
 import { FormButtons } from "./components/forms/formButtons";
 import { ButtonPrimary } from "./components/buttons/buttonPrimary";
 import { BaseButton } from "./components/buttons/baseButton";
+import { ButtonDefault } from "./components/buttons/buttonDefault";
 @NgModule({
     imports: [
         HttpModule,
@@ -40,7 +41,8 @@ import { BaseButton } from "./components/buttons/baseButton";
         NumberInput,
 
         ButtonPrimary,
-        BaseButton
+        BaseButton,
+        ButtonDefault
     ],
     exports: [
         Page,
@@ -62,7 +64,8 @@ import { BaseButton } from "./components/buttons/baseButton";
 
 
         ButtonPrimary,
-        BaseButton
+        BaseButton,
+        ButtonDefault
     ]
 })
 export class AppCommonModule { }

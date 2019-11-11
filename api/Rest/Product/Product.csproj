@@ -57,6 +57,7 @@
     <Compile Include="Api\ProductsController.cs" />
     <Compile Include="Context\ProductContext.cs" />
     <Compile Include="Dtos\CreateProductRequest.cs" />
+    <Compile Include="Dtos\UpdateProductRequest.cs" />
     <Compile Include="Entity\Product.cs" />
     <Compile Include="Enums\ProductValidationRules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

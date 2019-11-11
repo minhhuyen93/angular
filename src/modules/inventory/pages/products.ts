@@ -22,7 +22,7 @@ export class Products extends BaseControl {
     constructor(router: Router) {
         super();
         this.router = router;
-        this.model = new ProductsModel(this.i18n);
+        this.model = new ProductsModel(this);
         let service: IProductService = window.ioc.resolve(IoCNames.IProductService);
         let self = this;
         service.getProducts().then((response: Array<ProductsModel>) => {
@@ -35,13 +35,31 @@ export class Products extends BaseControl {
     public onAddNewProductClicked(): void {
         this.router.navigate(["/inventory/products/addNew"]);
     }
+    public onEditProductClicked(item: any): void {
+        let url: string = String.format("/inventory/product/edit/{0}", item.id);
+        this.router.navigate([url]);
+    }
+    public onDeleteProductClicked(item: any): void {
+        let productService: IProductService = window.ioc.resolve(IoCNames.IProductService);
+        let self = this;
+        productService.deleteProduct(item.id).then(() => {
+            self.reload();
+        });
+    }
+    private reload(): void {
+        let service: IProductService = window.ioc.resolve(IoCNames.IProductService);
+        let self = this;
+        service.getProducts().then((response: Array<ProductsModel>) => {
+            self.model.options.data.resolve(response);
+        });
+    }
 }
 class ProductsModel {
     public buttons: Array<IButtonModel> = [];
     public options: IGridOption;
     private i18n: any;
-    constructor(i18n: any) {
-        this.i18n = i18n;
+    constructor(page: Products) {
+        this.i18n = page.i18n;
         this.options = {
             data: PromiseFactory.create(),
             columns: [
@@ -49,6 +67,20 @@ class ProductsModel {
                 { title: this.i18n.inventory.products.quantity, field: "quantity" },
                 { title: this.i18n.inventory.products.price, field: "price" },
                 { title: this.i18n.inventory.products.description, field: "description" },
+            ],
+            actions: [
+                {
+                    text: page.i18n.inventory.products.edit,
+                    handler: (item: any) => {
+                        page.onEditProductClicked(item);
+                    }
+                },
+                {
+                    text: page.i18n.inventory.products.delete,
+                    handler: (item: any) => {
+                        page.onDeleteProductClicked(item);
+                    }
+                }
             ]
         };
     }

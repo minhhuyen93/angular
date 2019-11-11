@@ -4,7 +4,7 @@ import { required, minLength, maxLength, greaterThan } from "@app/common";
 import { ProductValidationRules } from "../models/enums";
 import { IProductService } from "../services/iproductService";
 import { BaseModel } from "@app/common";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 @Component({
     template: `
         <page [title]="i18n.inventory.addOrEdit.title">
@@ -52,21 +52,43 @@ import { Router } from "@angular/router";
 export class AddOrEditProduct extends BaseControl {
     public model: AddOrEditProductModel;
     private router: Router;
-    constructor(router: Router) {
+    private route: ActivatedRoute;
+    private editProductId: string;
+    constructor(router: Router, route: ActivatedRoute) {
         super();
         this.router = router;
+        this.route = route;
         this.model = new AddOrEditProductModel();
+        this.route.params.subscribe((params: any) => {
+            this.editProductId = params["id"];
+        });
+        if (!this.editProductId) {
+            let productService: IProductService = window.ioc.resolve(IoCNames.IProductService);
+            let self = this;
+            productService.getProduct(this.editProductId).then((product: any) => {
+                self.model.import(product);
+            });
+        }
     }
     public onSaveClicked(): void {
         if (!this.model.isValid()) { return; }
         let productService: IProductService = window.ioc.resolve(IoCNames.IProductService);
         let self = this;
+        if (!this.editProductId) {
+            productService.updateProduct(this.model).then(() => {
+                self.router.navigate(["/inventory/products"]);
+            });
+        }
         productService.addProduct(this.model).then(() => {
             self.router.navigate(["/inventory/products"]);
         });
     }
+    public onCancleClicked(): void {
+        this.router.navigate(["/inventory/products"]);
+    }
 }
 export class AddOrEditProductModel extends BaseModel {
+    public id: number;
     @required("inventory.addOrEdit.nameWasRequired")
     @minLength("inventory.addOrEdit.nameWasUnderMinLength", ProductValidationRules.MinLength)
     @maxLength("inventory.addOrEdit.nameWasExceedMaxLength", ProductValidationRules.MaxLength)
@@ -78,4 +100,11 @@ export class AddOrEditProductModel extends BaseModel {
     @greaterThan("inventory.addOrEdit.priceWasGreaterThanZero", ProductValidationRules.GreaterThanZero)
     public price: number;
     public description: string;
+    public import(product: any): void {
+        this.id = product.id;
+        this.name = product.name;
+        this.quantity = product.quantity;
+        this.price = product.price;
+        this.description = product.description;
+    }
 }

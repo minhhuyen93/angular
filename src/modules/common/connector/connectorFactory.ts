@@ -27,6 +27,17 @@ class JsonConnector implements IConnector {
         });
         return def;
     }
+    public delete(url: string): Promise {
+        let def: Promise = PromiseFactory.create();
+        let http: Http = window.ioc.resolve(Http);
+        let self = this;
+        http.delete(url).map((response: any) => {
+            return response.json();
+        }).subscribe((data: any) => {
+            self.processResponse(def, data);
+        });
+        return def;
+    }
     public post(url: string, item: any): Promise {
         let def: Promise = PromiseFactory.create();
         let http: Http = window.ioc.resolve(Http);

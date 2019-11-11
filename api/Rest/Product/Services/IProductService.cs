@@ -7,5 +7,8 @@ namespace Product.Services
     {
         IList<Entity.Product> GetProducts();
         void CreateProduct(CreateProductRequest request);
+        Entity.Product GetProduct(int productId);
+        void UpdateProduct(UpdateProductRequest request);
+        void DeleteProduct(int productId);
     }
 }

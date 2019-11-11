@@ -5,7 +5,8 @@ import { AddOrEditProduct } from "./pages/addOrEditProduct";
 let routes: Routes = [
     { path: "", redirectTo: "products", pathMatch: "full" },
     { path: "products", component: Products },
-    { path: "products/addNew", component: AddOrEditProduct }
+    { path: "products/addNew", component: AddOrEditProduct },
+    { path: "products/edit/:id", component: AddOrEditProduct }
 ];
 @NgModule({
     imports: [
