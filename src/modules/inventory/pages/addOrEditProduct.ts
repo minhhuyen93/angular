@@ -66,6 +66,8 @@ export class AddOrEditProduct extends BaseControl {
             productService.getProduct(this.editProductId).then((product: any) => {
                 self.model.import(product);
             });
+        } else {
+            this.model.reload();
         }
     }
     public onSaveClicked(): void {
@@ -104,5 +106,11 @@ export class AddOrEditProductModel extends BaseModel {
         this.quantity = product.quantity;
         this.price = product.price;
         this.description = product.description;
+    }
+    public reload(): void {
+        this.name = '';
+        this.quantity = 0;
+        this.price = 0;
+        this.description = '';
     }
 }
