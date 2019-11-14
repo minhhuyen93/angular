@@ -6,7 +6,8 @@
         "price": "Price",
         "description": "Description",
         "addNew": "Add New",
-        "edit": "Edit Product"
+        "edit": "Edit",
+        "delete": "Delete"
     },
     "addOrEdit": {
         "title": "Add or Edit Product",

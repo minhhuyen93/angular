@@ -6,3 +6,8 @@ src/**/*.js.map
 api/Rest/packages/
 api/Rest/Product.Api/bin/
 api/Rest/Product.Api/obj/
+api/Rest/Product/bin/Debug/
+api/Rest/TinyERP/bin/
+api/Rest/Product/obj/
+api/Rest/TinyERP/obj/
+api/Rest/.vs/Rest/v16/

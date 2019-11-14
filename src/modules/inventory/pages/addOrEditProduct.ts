@@ -22,7 +22,7 @@ import { Router, ActivatedRoute } from "@angular/router";
                     <form-number-input [title]="i18n.inventory.addOrEdit.quantity"
                     [validations]="[
                         'inventory.addOrEdit.quantityWasRequired',
-                        'inventory.addOrEdit.quantityWasGreaterThanZero',
+                        'inventory.addOrEdit.quantityWasGreaterThanZero'
                     ]"
                     [(model)]="model.quantity"
                     ></form-number-input>
@@ -30,7 +30,7 @@ import { Router, ActivatedRoute } from "@angular/router";
                     <form-number-input [title]="i18n.inventory.addOrEdit.price"
                     [validations]="[
                         'inventory.addOrEdit.priceWasRequired',
-                        'inventory.addOrEdit.priceWasGreaterThanZero',
+                        'inventory.addOrEdit.priceWasGreaterThanZero'
                     ]"
                     [(model)]="model.price"
                     ></form-number-input>
@@ -41,7 +41,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 
                     <form-buttons>
                         <button-primary (onClicked)="onSaveClicked($event)" [text]="i18n.common.save"></button-primary>
-                        <button-default (onClicked)="onCancleClicked($event)" [text]="i18n.common.cancle"></button-default>
+                        <button-default (onClicked)="onCancelClicked($event)" [text]="i18n.common.cancel"></button-default>
                     </form-buttons>
 
                 </form-horizontal>
@@ -59,10 +59,8 @@ export class AddOrEditProduct extends BaseControl {
         this.router = router;
         this.route = route;
         this.model = new AddOrEditProductModel();
-        this.route.params.subscribe((params: any) => {
-            this.editProductId = params["id"];
-        });
-        if (!this.editProductId) {
+        this.editProductId = route.snapshot.params["id"];
+        if (this.editProductId != null) {
             let productService: IProductService = window.ioc.resolve(IoCNames.IProductService);
             let self = this;
             productService.getProduct(this.editProductId).then((product: any) => {
@@ -83,7 +81,7 @@ export class AddOrEditProduct extends BaseControl {
             self.router.navigate(["/inventory/products"]);
         });
     }
-    public onCancleClicked(): void {
+    public onCancelClicked(): void {
         this.router.navigate(["/inventory/products"]);
     }
 }

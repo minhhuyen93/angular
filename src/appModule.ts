@@ -6,11 +6,15 @@ import { Layout } from "./layout";
 import { IoCNames, IResourceService } from "@app/common";
 import { IAppSettingService } from "./modules/common/services/iappSettingService";
 import appConfig from "./app/config/appConfig";
+import { HttpModule } from "@angular/http";
+import { CommonModule } from "@angular/common";
 @NgModule({
     imports: [
-        BrowserModule,
         FormsModule,
-        AppRoutes
+        BrowserModule,
+        HttpModule,
+        CommonModule,
+        AppRoutes,
     ],
     declarations: [Layout],
     entryComponents: [Layout]
