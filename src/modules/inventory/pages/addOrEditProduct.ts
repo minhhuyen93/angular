@@ -74,10 +74,11 @@ export class AddOrEditProduct extends BaseControl {
         if (!this.model.isValid()) { return; }
         let productService: IProductService = window.ioc.resolve(IoCNames.IProductService);
         let self = this;
-        if (!this.editProductId) {
+        if (!!this.editProductId) {
             productService.updateProduct(this.model).then(() => {
                 self.router.navigate(["/inventory/products"]);
             });
+            return;
         }
         productService.addProduct(this.model).then(() => {
             self.router.navigate(["/inventory/products"]);

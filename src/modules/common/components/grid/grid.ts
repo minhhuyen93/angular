@@ -77,9 +77,7 @@ export class Grid implements DoCheck, AfterViewInit {
     private getGridActionAsHtml(actions: Array<IGridAction>, dataItem: any): string {
         let html: string = "";
         actions.forEach((action: IGridAction) => {
-            //if (action.isValid && !action.isValid(dataItem)) {
-                html = String.format("{0}<button class='grid-item-action' item-id='{1}'>{2}</button>", html, action.id, action.text);
-            //}
+            html = String.format("{0}<button class='grid-item-action' item-id='{1}'>{2}</button>", html, action.id, action.text);
         });
         return html;
     }

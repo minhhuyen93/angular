@@ -10,7 +10,6 @@ E:\training\exam\api\Rest\TinyERP\bin\Debug\Castle.Windsor.xml
 E:\training\exam\api\Rest\TinyERP\bin\Debug\Newtonsoft.Json.xml
 E:\training\exam\api\Rest\TinyERP\bin\Debug\System.Net.Http.Formatting.xml
 E:\training\exam\api\Rest\TinyERP\bin\Debug\System.Web.Http.xml
-E:\training\exam\api\Rest\TinyERP\obj\Debug\TinyERP.csprojAssemblyReference.cache
 E:\training\exam\api\Rest\TinyERP\obj\Debug\TinyERP.csproj.CopyComplete
 E:\training\exam\api\Rest\TinyERP\obj\Debug\TinyERP.dll
 E:\training\exam\api\Rest\TinyERP\obj\Debug\TinyERP.pdb

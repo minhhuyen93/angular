@@ -1,9 +1,9 @@
+import { Router } from "@angular/router";
 import { Component } from "@angular/core";
 import { BaseControl, IButtonModel, IoCNames } from "@app/common";
 import { IGridOption } from "src/modules/common/components/grid/igridOption";
 import { PromiseFactory } from "src/modules/common/models/promise";
 import { IProductService } from "../services/iproductService";
-import { Router } from "@angular/router";
 @Component({
     template: `
         <page [title]="i18n.inventory.products.title">
