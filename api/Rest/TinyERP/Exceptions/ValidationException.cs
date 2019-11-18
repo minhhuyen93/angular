@@ -2,7 +2,7 @@
 
 namespace TinyERP.Exceptions
 {
-    public class ValidationException : System.Exception
+    public class ValidationException : System.Exception, IValidationException
     {
         public IList<ExceptionErrorMessage> Errors { get; set; }
         public ValidationException(IList<string> errorKeys)

@@ -15,6 +15,7 @@
         "nameWasRequired": "Name was required",
         "nameWasUnderMinLength": "Name was under minlength",
         "nameWasExceedMaxLength": "Name was exceed maxlength",
+        "nameWasExisted": "Name was existed",
         "quantity": "Quantity",
         "quantityWasRequired": "Quantity was required",
         "quantityWasGreaterThanZero": "Quantity was greater than zero",

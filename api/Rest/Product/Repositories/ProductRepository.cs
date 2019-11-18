@@ -17,7 +17,7 @@ namespace Product.Repositories
         public Entity.Product GetProductByName(string name)
         {
             ProductContext context = new ProductContext();
-            return context.Products?.FirstOrDefault(x => x.Name == name);
+            return context.Products.FirstOrDefault(x => x.Name == name);
         }
 
         public IList<Entity.Product> GetProducts()

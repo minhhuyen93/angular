@@ -14,7 +14,8 @@ import { Router, ActivatedRoute } from "@angular/router";
                     [validations]="[
                         'inventory.addOrEdit.nameWasRequired',
                         'inventory.addOrEdit.nameWasUnderMinLength',
-                        'inventory.addOrEdit.nameWasExceedMaxLength'
+                        'inventory.addOrEdit.nameWasExceedMaxLength',
+                        'inventory.addOrEdit.nameWasExisted'
                     ]"
                     [(model)]="model.name"
                     ></form-text-input>

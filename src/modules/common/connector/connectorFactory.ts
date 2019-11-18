@@ -57,16 +57,16 @@ class JsonConnector implements IConnector {
             def.resolve(response);
             return;
         }
-        if (response && response.hasOwnProperty("data")) {
-            def.resolve(response.data);
-            return;
-        }
-        if (response.errors != null) {
+        if (response.errors != null && response.errors.length > 0) {
             let eventManager: IEventManager = window.ioc.resolve(IoCNames.IEventManager);
             response.errors.forEach((error: any) => {
                 eventManager.publish(new ValidationResult(error.errorKey, false));
             });
             def.reject(response.errors);
+            return;
+        }
+        if (response && response.hasOwnProperty("data")) {
+            def.resolve(response.data);
         }
     }
     private toJson(item: any): any {

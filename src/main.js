@@ -1,7 +1,7 @@
 System.register(["@angular/platform-browser-dynamic", "./appModule", "@app/common", "./app/config/ioc"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var platform_browser_dynamic_1, appModule_1, common_1, ioc_1, iocContainer;
+    var __moduleName = context_1 && context_1.id;
     return {
         setters: [
             function (platform_browser_dynamic_1_1) {
