@@ -1,5 +1,16 @@
 E:\training\exam\api\Rest\TinyERP\bin\Debug\TinyERP.dll
 E:\training\exam\api\Rest\TinyERP\bin\Debug\TinyERP.pdb
+E:\training\exam\api\Rest\TinyERP\bin\Debug\Castle.Core.dll
+E:\training\exam\api\Rest\TinyERP\bin\Debug\Castle.Windsor.dll
+E:\training\exam\api\Rest\TinyERP\bin\Debug\Newtonsoft.Json.dll
+E:\training\exam\api\Rest\TinyERP\bin\Debug\System.Net.Http.Formatting.dll
+E:\training\exam\api\Rest\TinyERP\bin\Debug\System.Web.Http.dll
+E:\training\exam\api\Rest\TinyERP\bin\Debug\Castle.Core.xml
+E:\training\exam\api\Rest\TinyERP\bin\Debug\Castle.Windsor.xml
+E:\training\exam\api\Rest\TinyERP\bin\Debug\Newtonsoft.Json.xml
+E:\training\exam\api\Rest\TinyERP\bin\Debug\System.Net.Http.Formatting.xml
+E:\training\exam\api\Rest\TinyERP\bin\Debug\System.Web.Http.xml
 E:\training\exam\api\Rest\TinyERP\obj\Debug\TinyERP.csprojAssemblyReference.cache
+E:\training\exam\api\Rest\TinyERP\obj\Debug\TinyERP.csproj.CopyComplete
 E:\training\exam\api\Rest\TinyERP\obj\Debug\TinyERP.dll
 E:\training\exam\api\Rest\TinyERP\obj\Debug\TinyERP.pdb

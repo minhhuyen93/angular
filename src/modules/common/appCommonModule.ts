@@ -16,10 +16,12 @@ import { FormButtons } from "./components/forms/formButtons";
 import { ButtonPrimary } from "./components/buttons/buttonPrimary";
 import { BaseButton } from "./components/buttons/baseButton";
 import { ButtonDefault } from "./components/buttons/buttonDefault";
+import { FormsModule } from "@angular/forms";
 @NgModule({
     imports: [
-        HttpModule,
-        CommonModule
+        CommonModule,
+        FormsModule,
+        HttpModule
     ],
     declarations: [
         Page,

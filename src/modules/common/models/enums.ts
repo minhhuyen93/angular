@@ -17,7 +17,8 @@ export enum IoCNames {
 }
 export enum PromiseStatus {
     Subscribe = 1,
-    Success = 2
+    Success = 2,
+    Failed =3
 }
 export enum LanguageCode {
     EN = "en"

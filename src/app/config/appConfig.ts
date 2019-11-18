@@ -4,7 +4,7 @@ let appConfig: IConfigModel = {
     domains: [
         {
             key: "InventoryApi",
-            value: "http://online.training/rest/api"
+            value: "http://online.training.api/api"
         }
     ]
 };

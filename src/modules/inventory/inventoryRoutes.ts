@@ -1,3 +1,4 @@
+import { AppCommonModule } from "@app/common";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { Products } from "./pages/products";
@@ -10,6 +11,7 @@ let routes: Routes = [
 ];
 @NgModule({
     imports: [
+        AppCommonModule,
         RouterModule.forChild(routes)
     ],
     declarations: [

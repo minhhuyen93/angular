@@ -6,7 +6,7 @@ namespace Product.Context
     {
         public ProductContext():base("ProductConnectionString")
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ProductContext>());
+            Database.SetInitializer<ProductContext>(new DropCreateDatabaseIfModelChanges<ProductContext>());
         }
         public IDbSet<Entity.Product> Products { get; set; }
     }
