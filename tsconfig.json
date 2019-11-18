@@ -16,7 +16,7 @@
     ],
     "paths": {
      "@app/common": [
-       "src/modules/common/index"
+       "src/modules/common/index.ts"
      ] 
     }
   },

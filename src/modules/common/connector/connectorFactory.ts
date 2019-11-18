@@ -53,12 +53,12 @@ class JsonConnector implements IConnector {
         return def;
     }
     private processResponse(def: Promise, response: ResponseModel): void {
-        if (response.errors == null && response.data != null && response.hasOwnProperty("data")) {
-            def.resolve(response.data);
+        if (!response || !response.hasOwnProperty("data")) {
+            def.resolve(response);
             return;
         }
-        if (response.data == null && response.errors == null) {
-            def.resolve(response);
+        if (response && response.hasOwnProperty("data")) {
+            def.resolve(response.data);
             return;
         }
         if (response.errors != null) {
@@ -66,6 +66,7 @@ class JsonConnector implements IConnector {
             response.errors.forEach((error: any) => {
                 eventManager.publish(new ValidationResult(error.errorKey, false));
             });
+            def.reject(response.errors);
         }
     }
     private toJson(item: any): any {

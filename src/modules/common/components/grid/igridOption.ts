@@ -9,7 +9,7 @@ export interface IGridColumn {
     title: string;
 }
 export interface IGridAction {
-    isValid?: (dataItem: any) => boolean;
+    //isValid?: (dataItem: any) => boolean;
     id?: string;
     text: string;
     handler: (item: any) => void;

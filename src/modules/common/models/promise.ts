@@ -11,7 +11,9 @@ export class Promise {
     private status: PromiseStatus;
     private subscribeCallBack: any;
     public data: any;
+    public errors: Array<any>;
     private successCallBack: any;
+    private failCallBack: any;
     constructor() {
         this.id = guidHelper.create();
     }
@@ -39,6 +41,12 @@ export class Promise {
         this.processCallBack();
         return this;
     }
+    public reject(errors?: Array<any>): Promise {
+        this.errors = errors;
+        this.status = PromiseStatus.Failed;
+        this.processCallBack();
+        return this;
+    }
     private checkComplete(subPro: Promise): void {
         this.queue = this.queue.removeItem(subPro.id);
         if (this.queue.isEmpty()) {
@@ -53,6 +61,10 @@ export class Promise {
         }
         if (this.status == PromiseStatus.Success && !!this.successCallBack) {
             this.successCallBack(this.data);
+            return;
+        }
+        if (this.status == PromiseStatus.Failed && !!this.failCallBack) {
+            this.failCallBack(this.errors);
             return;
         }
     }

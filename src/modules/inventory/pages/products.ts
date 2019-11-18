@@ -1,9 +1,9 @@
+import { Router } from "@angular/router";
 import { Component } from "@angular/core";
 import { BaseControl, IButtonModel, IoCNames } from "@app/common";
 import { IGridOption } from "src/modules/common/components/grid/igridOption";
 import { PromiseFactory } from "src/modules/common/models/promise";
 import { IProductService } from "../services/iproductService";
-import { Router } from "@angular/router";
 @Component({
     template: `
         <page [title]="i18n.inventory.products.title">
@@ -25,7 +25,7 @@ export class Products extends BaseControl {
         this.model = new ProductsModel(this);
         let service: IProductService = window.ioc.resolve(IoCNames.IProductService);
         let self = this;
-        service.getProducts().then((response: Array<ProductsModel>) => {
+        service.getProducts().then((response: any) => {
             self.model.options.data.resolve(response);
         });
         this.model.addButton(this.i18n.inventory.products.addNew, "fa-plus", () => {
@@ -36,7 +36,7 @@ export class Products extends BaseControl {
         this.router.navigate(["/inventory/products/addNew"]);
     }
     public onEditProductClicked(item: any): void {
-        let url: string = String.format("/inventory/product/edit/{0}", item.id);
+        let url: string = String.format("/inventory/products/edit/{0}", item.id);
         this.router.navigate([url]);
     }
     public onDeleteProductClicked(item: any): void {
@@ -73,7 +73,8 @@ class ProductsModel {
                     text: page.i18n.inventory.products.edit,
                     handler: (item: any) => {
                         page.onEditProductClicked(item);
-                    }
+                    },
+
                 },
                 {
                     text: page.i18n.inventory.products.delete,

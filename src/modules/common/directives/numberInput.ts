@@ -8,7 +8,7 @@ export class NumberInput {
     private ui: ElementRef;
     private specialKey: Array<string> = ['Backspace', 'Tab', 'End', 'Home'];
     private signedKey: string = '-';
-    private intergerRegex = new RegExp(/^([-0-9])([0-9])&$/g);
+    private intergerRegex = new RegExp(/^[0-9]+(\.[0-9]*){0,1}$/g);
     constructor(ui: ElementRef) {
         this.ui = ui;
     }
